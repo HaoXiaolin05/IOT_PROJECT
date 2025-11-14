@@ -42,6 +42,8 @@ extern SemaphoreHandle_t xBinarySemaphoreInternet;
 extern QueueHandle_t xQueueForLedBlink;
 extern QueueHandle_t xQueueForNeoPixel;
 extern QueueHandle_t xQueueForTinyML;
+extern QueueHandle_t xQueueForCoreIOT;
+extern QueueHandle_t xQueueForMainServer;
 
 extern QueueHandle_t xQueueMLResultforLED;
 extern QueueHandle_t xQueueMLResultforNEO;

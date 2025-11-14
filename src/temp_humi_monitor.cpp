@@ -45,6 +45,8 @@ void temp_humi_monitor(void *pvParameters){
         xQueueSend(xQueueForLedBlink, &sensordata, 0);
         xQueueSend(xQueueForNeoPixel, &sensordata, 0);
         xQueueSend(xQueueForTinyML, &sensordata, 0);
+        xQueueSend(xQueueForCoreIOT, &sensordata, 0);
+        xQueueSend(xQueueForMainServer, &sensordata, 0);
            
 
             lcd.clear();
@@ -67,6 +69,20 @@ void temp_humi_monitor(void *pvParameters){
                 lcd.print("WARN ");
             } else { 
                 lcd.print("NORM ");
+            }
+
+            lcd.setCursor(11, 1);
+            if (humidity < 0) {
+                lcd.print("ERROR");
+            }
+            else if (humidity >= 0 && humidity < 60) {
+                lcd.print("LOW ");
+            }
+            else if (humidity >= 60 && humidity < 80) {
+                lcd.print("NORM ");
+            }
+            else {
+                lcd.print("WET ");
             }
         }
 
