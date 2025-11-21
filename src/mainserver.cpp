@@ -363,6 +363,9 @@ void handleConnect()
   connecting = true;
   connect_start_ms = millis();
   connectToWiFi();
+  
+  xTaskCreate(taskCoreIOT, "CoreIOT Task" ,4096  ,NULL  ,2 , NULL);
+  vTaskDelete(NULL);
 }
 
 // ========== WiFi ==========

@@ -2,7 +2,7 @@
 
 // ----------- CONFIGURE THESE! -----------
 const char* coreIOT_Server = "app.coreiot.io";  
-const char* coreIOT_Token = "g7drm1amhd3dchr379xu";   // Device Access Token
+const char* coreIOT_Token = "1soz6w0m02s3ma7qza2s";   // Device Access Token
 const int   mqttPort = 1883;
 // ----------------------------------------
 
@@ -61,11 +61,11 @@ void callback(char* topic, byte* payload, unsigned int length) {
     if (strcmp(params, "ON") == 0) {
       Serial.println("Device turned ON.");
       //TODO
-
+      digitalWrite(47, HIGH);
     } else {   
       Serial.println("Device turned OFF.");
       //TODO
-
+      digitalWrite(47, LOW);
     }
   } else {
     Serial.print("Unknown method: ");
@@ -102,7 +102,8 @@ void setup_coreiot(){
 }
 
 void coreiot_task(void *pvParameters){
-
+    SensorData data_receive;
+    pinMode(47, OUTPUT);
     setup_coreiot();
 
     while(1){
